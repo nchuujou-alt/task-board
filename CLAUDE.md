@@ -4,9 +4,30 @@
 
 ## プロジェクト概要
 
-タスクボードアプリケーション。
+タスクボードアプリケーション。テキスト入力でタスクを追加し、チェックボックスで完了・未完了を切り替え、削除できる。完了済みタスクはグレー表示になる。
 
-> 技術スタックは未定です。フレームワークやライブラリを選定したら、このセクションに構成（フロントエンド/バックエンド/DB/主要ライブラリ）とディレクトリ構成、開発・ビルド・テストコマンドを追記してください。
+### 技術スタック
+
+- React 19 + TypeScript
+- Vite（開発サーバー・ビルド）
+- oxlint（Lint）
+- 状態はブラウザの `localStorage` に保存（バックエンド・DBなし）
+
+### ディレクトリ構成
+
+- `src/App.tsx` — アプリのルート。タスクの状態管理（追加・トグル・削除）と `localStorage` への永続化
+- `src/types.ts` — `Task` 型定義
+- `src/components/TaskForm.tsx` — タスク追加用の入力フォーム
+- `src/components/TaskList.tsx` — タスク一覧の描画
+- `src/components/TaskItem.tsx` — タスク1件分の表示（チェックボックス・削除ボタン）
+- `src/App.css` — タスクボードのスタイル
+
+### コマンド
+
+- `npm run dev` — 開発サーバー起動
+- `npm run build` — 型チェック + 本番ビルド
+- `npm run lint` — oxlintによるLint
+- `npm run preview` — ビルド結果のプレビュー
 
 ## Git運用ルール
 
@@ -29,7 +50,11 @@
 4. コミットを作成する（メッセージは変更内容が分かるように）
 5. `git push` でGitHubにプッシュする
 
+### リポジトリ情報
+
+- GitHub: https://github.com/nchuujou-alt/task-board
+- 既定ブランチ: `main`
+
 ### 未設定の項目
 
-- GitHubリポジトリは未作成です。作成後、リモートURLと既定ブランチ名（`main` など）をこのファイルに追記してください。
 - コミットメッセージの規約（Conventional Commits など）を採用する場合はここに追記してください。
