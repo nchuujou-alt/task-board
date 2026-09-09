@@ -12,6 +12,7 @@
 - Vite（開発サーバー・ビルド）
 - oxlint（Lint）
 - 状態はブラウザの `localStorage` に保存（バックエンド・DBなし）
+- GitHub Actions + GitHub Pages（CI/CDとホスティング）
 
 ### ディレクトリ構成
 
@@ -21,6 +22,15 @@
 - `src/components/TaskList.tsx` — タスク一覧の描画
 - `src/components/TaskItem.tsx` — タスク1件分の表示（チェックボックス・削除ボタン）
 - `src/App.css` — タスクボードのスタイル
+
+### コンポーネントの命名規約
+
+- コンポーネントは `src/components/` 配下に1ファイル1コンポーネントで配置し、ファイル名はコンポーネント名と同じPascalCase（例: `TaskForm.tsx`）にする
+- コンポーネントは `export default` ではなく named export の関数コンポーネントにする（例: `export function TaskForm(...)`）
+- Propsの型は `<コンポーネント名>Props` という名前のinterfaceで定義する（例: `TaskFormProps`）
+- 親から渡すコールバックpropsは `on` + 動詞で命名する（例: `onAdd`, `onToggle`, `onDelete`）
+- コンポーネント内のイベントハンドラは `handle` + 対象で命名する（例: `handleSubmit`）
+- 型定義は個々のコンポーネントファイルに置かず `src/types.ts` に集約する
 
 ### コマンド
 
@@ -55,9 +65,10 @@
 - GitHub: https://github.com/nchuujou-alt/task-board
 - 既定ブランチ: `main`
 
-### GitHub Pages
+## デプロイ先
 
-- 公開URL: https://nchuujou-alt.github.io/task-board/
+https://nchuujou-alt.github.io/task-board/
+
 - `main` へのpushをトリガーに `.github/workflows/deploy.yml` がビルドして自動デプロイする
 - プロジェクトページ（リポジトリ名がパスに入る）のため、`vite.config.ts` の `base` は `/task-board/` に設定している。リポジトリ名を変更する場合はここも合わせて変更すること
 - リポジトリ設定の Settings > Pages > Source を「GitHub Actions」にする初回設定が必要（未設定の場合は初回pushでワークフローは動くが公開はされない）
