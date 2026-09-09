@@ -55,6 +55,13 @@
 - GitHub: https://github.com/nchuujou-alt/task-board
 - 既定ブランチ: `main`
 
+### GitHub Pages
+
+- 公開URL: https://nchuujou-alt.github.io/task-board/
+- `main` へのpushをトリガーに `.github/workflows/deploy.yml` がビルドして自動デプロイする
+- プロジェクトページ（リポジトリ名がパスに入る）のため、`vite.config.ts` の `base` は `/task-board/` に設定している。リポジトリ名を変更する場合はここも合わせて変更すること
+- リポジトリ設定の Settings > Pages > Source を「GitHub Actions」にする初回設定が必要（未設定の場合は初回pushでワークフローは動くが公開はされない）
+
 ### 未設定の項目
 
 - コミットメッセージの規約（Conventional Commits など）を採用する場合はここに追記してください。
